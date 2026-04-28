@@ -1,10 +1,13 @@
-import React from 'react'
-import './footer.css' ;
+import React from 'react';
+import './footer.css';
 
 const Footer = () => {
+  const year = new Date().getFullYear();
   return (
-    <footer className='footer'>Copyright &#169; 2023 Krishna Sanaka. All rights recieved </footer>
-    )
-}
+    <footer className="footer">
+      Copyright &copy; {year} Krishna Sanaka. All rights reserved.
+    </footer>
+  );
+};
 
-export default Footer
+export default Footer;

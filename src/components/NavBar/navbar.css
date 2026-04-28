@@ -52,17 +52,20 @@
     margin: 1rem;
 }
 
-@media (max-width:768px) {
-    
-}
 .active {
     color: yellow;
     padding-bottom:0.5rem ;
     border-bottom: 3px solid yellow;
    
 }
-.mobMenu{
+.mobMenuBtn {
     display: none;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+.mobMenu{
     object-fit: cover;
     height: 1.8rem;
 }
@@ -87,15 +90,12 @@
     margin: 0.25rem;
     background: rgb(30, 30, 30);
 }
-@media  screen and (max-width : 720px) {
-    .mobMenu{
+@media screen and (max-width: 720px) {
+    .mobMenuBtn {
         display: flex;
     }
-    .desktopMenu{
+    .desktopMenu,
+    .desktopMenuBtn {
         display: none;
     }
-    .desktopMenuBtn{
-        display: none;
-    }
-    
 }

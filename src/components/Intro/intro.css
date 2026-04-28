@@ -28,8 +28,7 @@
  }
  .hello {
     font-size: 1.75rem;
-    font-size: 100;
-
+    font-weight: 100;
  }
 
  .introName {
