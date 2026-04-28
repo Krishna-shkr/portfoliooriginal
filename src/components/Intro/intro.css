@@ -1,66 +1,104 @@
-#intro {
-    height: calc(100vh - 4rem);
-    width: 100vw;
-    max-width: 75rem;
+.intro {
+    max-width: var(--max-width);
     margin: 0 auto;
-    overflow: hidden;
-    position: relative;
-}
-
-.bg {
-    position: absolute;
-    top: 2rem;
-    right: 0;
-    z-index: -1;
-    object-fit: cover;
-    height: 100vh;
-}
-
- .introContent {
-    height: 100vh;
-    width: 100vw;
-    padding: 2rem;
-    font-size: 3rem;
-    font-weight: 700;
+    padding: 4rem 2rem 6rem;
+    text-align: center;
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+.introBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.9rem;
+    background: var(--bg-pill);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.introDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #2ec27e;
+    box-shadow: 0 0 0 4px rgba(46, 194, 126, 0.18);
+}
+
+.introGreeting {
+    color: var(--text-muted);
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.introGreetingName {
+    color: var(--text);
+    font-weight: 600;
+}
+
+.introDisplay {
+    font-size: clamp(4rem, 14vw, 11rem);
+    margin: 0 0 2rem;
+    text-align: center;
+}
+
+.introSub {
+    max-width: 38rem;
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+}
+
+.introCtas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
     justify-content: center;
- }
- .hello {
-    font-size: 1.75rem;
-    font-weight: 100;
- }
+}
 
- .introName {
-    color: yellow;
- }
+.btnPrimary,
+.btnGhost {
+    padding: 0.85rem 1.6rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid transparent;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
 
- .introPara{
-    font-size: medium;
-    font-weight: 300;
-    letter-spacing: 1px;
- }
+.btnPrimary {
+    background: var(--primary);
+    color: #fff;
+}
 
- .btn {
-    background: white;
-    margin: 1rem 0;
-    padding: 0.75rem 1.5rem;
-    border: none;
-    border-radius: 2rem;
- }
+.btnPrimary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 18px rgba(232, 85, 30, 0.32);
+}
 
- .btnImg {
-    object-fit: cover;
-    margin: 0 0.25rem;
-    height: 1rem;
- }
+.btnGhost {
+    background: transparent;
+    color: var(--text);
+    border-color: var(--border);
+}
 
- @media screen and (max-width:480px) {
-    .bg{
-        right: -20vw;
-        
+.btnGhost:hover {
+    background: var(--primary-soft);
+    border-color: var(--primary-ring);
+    color: var(--primary);
+}
+
+@media (max-width: 480px) {
+    .intro {
+        padding: 3rem 1.25rem 4rem;
     }
-    
-    
- }
-
+    .introGreeting {
+        font-size: 1.05rem;
+    }
+}

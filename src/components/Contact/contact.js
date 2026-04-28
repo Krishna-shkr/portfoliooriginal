@@ -1,31 +1,15 @@
 import React, { useRef, useState } from 'react';
 import './contact.css';
-import Walmart from '../../assets/walmart.png';
-import Adobe from '../../assets/adobe.png';
-import Microsoft from '../../assets/microsoft.png';
-import Facebook from '../../assets/facebook.png';
-import facebookIcon from '../../assets/facebook-icon.png';
-import twitterIcon from '../../assets/twitter.png';
-import youtubeIcon from '../../assets/youtube.png';
-import instagramIcon from '../../assets/instagram.png';
 import emailjs from '@emailjs/browser';
 
 const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
 const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
 const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
-const clients = [
-  { src: Walmart, alt: 'Walmart' },
-  { src: Adobe, alt: 'Adobe' },
-  { src: Microsoft, alt: 'Microsoft' },
-  { src: Facebook, alt: 'Facebook' },
-];
-
 const socials = [
-  { src: facebookIcon, alt: 'Facebook', href: 'https://facebook.com' },
-  { src: twitterIcon, alt: 'Twitter', href: 'https://twitter.com' },
-  { src: youtubeIcon, alt: 'YouTube', href: 'https://youtube.com' },
-  { src: instagramIcon, alt: 'Instagram', href: 'https://instagram.com' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/' },
+  { label: 'GitHub', href: 'https://github.com/' },
+  { label: 'Email', href: 'mailto:Krishnasanaka844@gmail.com' },
 ];
 
 const Contact = () => {
@@ -34,6 +18,16 @@ const Contact = () => {
 
   const sendEmail = (e) => {
     e.preventDefault();
+
+    if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
+      setStatus({
+        type: 'error',
+        message:
+          'Email service is not configured. Please reach out directly at Krishnasanaka844@gmail.com.',
+      });
+      return;
+    }
+
     setStatus({ type: 'sending', message: 'Sending…' });
 
     emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY).then(
@@ -51,37 +45,18 @@ const Contact = () => {
   };
 
   return (
-    <section id="contactPage">
-      <div id="clients">
-        <h2 className="contactPageTitle">My Clients</h2>
-        <p className="clientDesc">
-          Some of the organizations I&rsquo;ve had the chance to work with.
-        </p>
-        <div className="clientsImgs">
-          {clients.map((c) => (
-            <img
-              key={c.alt}
-              src={c.src}
-              alt={c.alt}
-              className="clientImg"
-              loading="lazy"
-            />
-          ))}
-        </div>
-      </div>
+    <section id="contact" className="contact">
+      <div className="contactInner">
+        <p className="contactPretitle">If my way of building resonates with you</p>
+        <h2 className="contactTitle">LET&rsquo;S TALK!</h2>
 
-      <div id="contact">
-        <h1 className="contactPageTitle">Contact Me</h1>
-        <span className="contactDesc">
-          Please fill out the form below and I&rsquo;ll get back to you.
-        </span>
         <form className="contactForm" ref={form} onSubmit={sendEmail} noValidate>
           <label htmlFor="your-name" className="visuallyHidden">Your name</label>
           <input
             id="your-name"
             type="text"
-            className="name"
-            placeholder="Your Name"
+            className="contactInput"
+            placeholder="Your name"
             name="your-name"
             required
           />
@@ -89,8 +64,8 @@ const Contact = () => {
           <input
             id="your-email"
             type="email"
-            className="email"
-            placeholder="Your Email"
+            className="contactInput"
+            placeholder="Your email"
             name="your-email"
             required
           />
@@ -98,36 +73,47 @@ const Contact = () => {
           <textarea
             id="message"
             name="message"
-            rows="5"
-            className="msg"
-            placeholder="Your Message"
+            rows="4"
+            className="contactInput contactTextarea"
+            placeholder="What&rsquo;s on your mind?"
             required
           />
-          <button type="submit" className="submitBtn" disabled={status.type === 'sending'}>
-            {status.type === 'sending' ? 'Sending…' : 'Submit'}
+          <button
+            type="submit"
+            className="contactSubmit"
+            disabled={status.type === 'sending'}
+          >
+            {status.type === 'sending' ? 'Sending…' : 'Send message'}
           </button>
-          {status.type !== 'idle' && status.type !== 'sending' && (
-            <p
-              role="status"
-              className={`formStatus formStatus--${status.type}`}
-            >
-              {status.message}
-            </p>
+          {status.type === 'success' && (
+            <p role="status" className="contactStatus contactStatusSuccess">{status.message}</p>
           )}
-          <div className="links">
-            {socials.map((s) => (
-              <a
-                key={s.alt}
-                href={s.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={s.alt}
-              >
-                <img src={s.src} alt="" className="link" />
-              </a>
-            ))}
-          </div>
+          {status.type === 'error' && (
+            <p role="status" className="contactStatus contactStatusError">{status.message}</p>
+          )}
         </form>
+
+        <div className="contactSocials">
+          {socials.map((s) => {
+            const isExternal = s.href.startsWith('http');
+            return (
+              <a
+                key={s.label}
+                href={s.href}
+                className="contactSocialLink"
+                {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+              >
+                {s.label} <span aria-hidden="true">→</span>
+              </a>
+            );
+          })}
+        </div>
+
+        <div className="contactFooterRow">
+          <span>Thanks for visiting!</span>
+          <span className="contactEmail">Krishnasanaka844@gmail.com</span>
+          <span>&copy; {new Date().getFullYear()} Krishna Sanaka</span>
+        </div>
       </div>
     </section>
   );

@@ -1,51 +1,62 @@
 import React from 'react';
 import './skills.css';
-import UIDesign from '../../assets/ui-design.png';
-import WebDesign from '../../assets/website-design.png';
-import AppDesign from '../../assets/app-design.png';
 
 const skills = [
   {
-    img: UIDesign,
-    alt: 'UI/UX design icon',
-    title: 'UI/UX Design',
-    description:
-      'Designing intuitive interfaces and user flows that turn complex tasks into simple ones.',
+    name: 'Node.js',
+    role: 'Backend',
+    blurb: 'Express APIs, Service Bus consumers, async job processors, MongoDB integration.',
   },
   {
-    img: WebDesign,
-    alt: 'Website design icon',
-    title: 'Website Design',
-    description:
-      'Building responsive, accessible websites with modern frontend tooling.',
+    name: '.NET / C#',
+    role: 'Notification orchestration',
+    blurb: 'ASP.NET Core service that orchestrates email, SMS, push, and in-app notifications with background workers, multi-tenancy, and bulk job tracking.',
   },
   {
-    img: AppDesign,
-    alt: 'App design icon',
-    title: 'Graphic Design',
-    description:
-      'Creating consistent visual systems, icons, and brand assets.',
+    name: 'MongoDB',
+    role: 'Document store',
+    blurb: 'Mongoose schemas for devices, notification logs, jobs, and audit trails.',
+  },
+  {
+    name: 'SQL Server',
+    role: 'Relational store',
+    blurb: 'Transactional data, reporting queries, and stored procedures.',
+  },
+  {
+    name: 'Angular 18',
+    role: 'Frontend',
+    blurb: 'Material + PrimeNG dashboards, RxJS streams, and SignalR clients.',
+  },
+  {
+    name: 'Azure',
+    role: 'Cloud',
+    blurb: 'Service Bus, Notification Hub, SignalR, Web PubSub, Functions, Blob Storage.',
   },
 ];
 
 const Skills = () => {
   return (
-    <section id="skills">
-      <span className="skillTitle">What I Do</span>
-      <span className="skillDesc">
-        I help teams ship polished products by combining engineering and design.
-      </span>
-      <div className="skillBars">
-        {skills.map((s) => (
-          <div key={s.title} className="skillBar">
-            <img src={s.img} alt={s.alt} className="skillBarImg" loading="lazy" />
-            <div className="skillBarText">
-              <h2>{s.title}</h2>
-              <p>{s.description}</p>
-            </div>
-          </div>
-        ))}
+    <section id="skills" className="skills">
+      <div className="skillsHeader">
+        <span className="eyebrow">What I work with</span>
+        <h2 className="skillsTitle display">MY STACK</h2>
+        <p className="skillsLead">
+          The tools I reach for every day, shipped in production at scale.
+        </p>
       </div>
+
+      <ol className="skillsList">
+        {skills.map((s, i) => (
+          <li key={s.name} className="skillRow">
+            <span className="skillIndex">{String(i + 1).padStart(2, '0')}</span>
+            <div className="skillCopy">
+              <h3 className="skillName">{s.name}</h3>
+              <p className="skillBlurb">{s.blurb}</p>
+            </div>
+            <span className="skillRole">{s.role}</span>
+          </li>
+        ))}
+      </ol>
     </section>
   );
 };
