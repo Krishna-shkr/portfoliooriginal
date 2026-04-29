@@ -5,15 +5,22 @@ import portrait from '../../assets/krishna.jpeg';
 const About = () => {
   return (
     <section id="about" className="about">
-      <div className="aboutLeft">
+      <div className="aboutLeft" data-reveal>
         <span className="eyebrow aboutEyebrow">A bit</span>
         <h2 className="aboutTitle display">ABOUT ME</h2>
-        <button type="button" className="aboutResume" aria-label="Open resume (coming soon)">
-          My resume
-        </button>
+        <a
+          className="aboutResume"
+          href={`${process.env.PUBLIC_URL}/KrishnaSanaka_Resume.pdf`}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Open Krishna Sanaka's resume in a new tab"
+          download="KrishnaSanaka_Resume.pdf"
+        >
+          My resume <span aria-hidden="true">↗</span>
+        </a>
       </div>
 
-      <div className="aboutRight">
+      <div className="aboutRight" data-reveal data-reveal-delay="1">
         <div className="aboutPhotoWrap">
           <img src={portrait} alt="Krishna Sanaka" className="aboutPhoto" />
         </div>
@@ -34,10 +41,9 @@ const About = () => {
           everything from wallet creation to transaction generation. I own the
           security layer (blockchain anchoring on Polygon, IPFS, RSA-encrypted
           IDs), the multi-channel notification system, the smart-card and
-          certificate generation pipeline, the Excel-driven onboarding flow that
-          turns raw student data into wallets and transactions, and the
-          reporting side that exports up to 2–5 lakh records back out to clients
-          on demand.
+          certificate generation pipeline, and the Azure Functions data flows
+          that turn raw student spreadsheets into live wallets and stream clean
+          extracts back out to clients on demand.
         </p>
       </div>
     </section>

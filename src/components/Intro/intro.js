@@ -26,10 +26,10 @@ const Intro = () => {
       </p>
 
       <div className="introCtas">
-        <Link to="works" smooth={true} offset={-80} duration={500}>
+        <Link to="works" smooth="easeInOutQuart" duration={900} offset={-80}>
           <button type="button" className="btnPrimary">View my work</button>
         </Link>
-        <Link to="pipeline" smooth={true} offset={-80} duration={500}>
+        <Link to="pipeline" smooth="easeInOutQuart" duration={900} offset={-80}>
           <button type="button" className="btnGhost">See what I build →</button>
         </Link>
       </div>

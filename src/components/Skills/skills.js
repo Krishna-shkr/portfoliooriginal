@@ -37,7 +37,7 @@ const skills = [
 const Skills = () => {
   return (
     <section id="skills" className="skills">
-      <div className="skillsHeader">
+      <div className="skillsHeader" data-reveal>
         <span className="eyebrow">What I work with</span>
         <h2 className="skillsTitle display">MY STACK</h2>
         <p className="skillsLead">
@@ -45,7 +45,7 @@ const Skills = () => {
         </p>
       </div>
 
-      <ol className="skillsList">
+      <ol className="skillsList" data-reveal data-reveal-delay="1">
         {skills.map((s, i) => (
           <li key={s.name} className="skillRow">
             <span className="skillIndex">{String(i + 1).padStart(2, '0')}</span>

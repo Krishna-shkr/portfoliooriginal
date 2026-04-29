@@ -56,7 +56,7 @@ const projects = [
 const Works = () => {
   return (
     <section id="works" className="works">
-      <div className="worksHeader">
+      <div className="worksHeader" data-reveal>
         <span className="eyebrow">What I&rsquo;ve shipped</span>
         <h2 className="worksTitle display">SELECTED WORK</h2>
         <p className="worksLead">
@@ -65,8 +65,13 @@ const Works = () => {
       </div>
 
       <div className="worksGrid">
-        {projects.map((p) => (
-          <article key={p.title} className="workCard">
+        {projects.map((p, i) => (
+          <article
+            key={p.title}
+            className="workCard"
+            data-reveal
+            data-reveal-delay={Math.min((i % 4) + 1, 4)}
+          >
             <span className="workLabel">{p.label}</span>
             <h3 className="workCardTitle">{p.title}</h3>
             <p className="workCardBody">{p.body}</p>

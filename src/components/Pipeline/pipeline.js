@@ -26,7 +26,7 @@ const pillars = [
       'Email: SendGrid',
       'SMS: AWS SNS / Twilio',
     ],
-  },
+  }, 
   {
     n: '03',
     label: 'File generation',
@@ -56,7 +56,7 @@ const pillars = [
 const Pipeline = () => {
   return (
     <section id="pipeline" className="pipeline">
-      <div className="pipelineHeader">
+      <div className="pipelineHeader" data-reveal>
         <span className="eyebrow">From wallet creation to transaction generation</span>
         <h2 className="pipelineTitle display">WHAT I BUILD</h2>
         <p className="pipelineLead">
@@ -67,8 +67,13 @@ const Pipeline = () => {
       </div>
 
       <div className="pillarGrid">
-        {pillars.map((p) => (
-          <article key={p.n} className="pillarCard">
+        {pillars.map((p, i) => (
+          <article
+            key={p.n}
+            className="pillarCard"
+            data-reveal
+            data-reveal-delay={Math.min(i + 1, 4)}
+          >
             <div className="pillarHeader">
               <span className="pillarN">{p.n}</span>
               <span className="pillarLabel">{p.label}</span>

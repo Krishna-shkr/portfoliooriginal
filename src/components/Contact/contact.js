@@ -9,7 +9,7 @@ const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 const socials = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/' },
   { label: 'GitHub', href: 'https://github.com/' },
-  { label: 'Email', href: 'mailto:Krishnasanaka844@gmail.com' },
+  { label: 'Email', href: 'mailto:krishnasanaka25@gmail.com' },
 ];
 
 const Contact = () => {
@@ -23,7 +23,7 @@ const Contact = () => {
       setStatus({
         type: 'error',
         message:
-          'Email service is not configured. Please reach out directly at Krishnasanaka844@gmail.com.',
+          'Email service is not configured. Please reach out directly at krishnasanaka25@gmail.com.',
       });
       return;
     }
@@ -111,7 +111,7 @@ const Contact = () => {
 
         <div className="contactFooterRow">
           <span>Thanks for visiting!</span>
-          <span className="contactEmail">Krishnasanaka844@gmail.com</span>
+          <span className="contactEmail">krishnasanaka25@gmail.com</span>
           <span>&copy; {new Date().getFullYear()} Krishna Sanaka</span>
         </div>
       </div>

@@ -25,8 +25,23 @@
     font-family: var(--font-body);
 }
 
+/* Note: scroll-behavior is intentionally NOT smooth here.
+   react-scroll handles all programmatic scrolling with its own easing;
+   browser-native smooth scrolling fights it and causes visible stutter. */
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
+}
+
+/* Honor prefers-reduced-motion globally */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
 
 body {
@@ -56,3 +71,4 @@ button {
     letter-spacing: 0.01em;
     text-transform: uppercase;
 }
+

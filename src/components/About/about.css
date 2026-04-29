@@ -25,7 +25,9 @@
 }
 
 .aboutResume {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
     padding: 0.85rem 2rem;
     background: var(--text);
     color: #fff;
@@ -33,12 +35,14 @@
     border-radius: var(--radius-pill);
     font-weight: 500;
     font-size: 0.95rem;
-    transition: transform 0.15s ease, opacity 0.15s ease;
+    cursor: pointer;
+    transition: transform 0.15s ease, opacity 0.15s ease, box-shadow 0.15s ease;
 }
 
 .aboutResume:hover {
     transform: translateY(-1px);
     opacity: 0.92;
+    box-shadow: 0 8px 18px rgba(47, 47, 47, 0.18);
 }
 
 .aboutRight {
